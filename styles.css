@@ -1,0 +1,8 @@
+#hyperlinkUpdaterApp { padding: 10px; margin-top: 25px; }
+
+.f { float: left; width:auto; margin-right: 40px; vertical-align: middle; }
+.ff { float: none; width:auto; vertical-align: middle; }
+h2 { margin-bottom:40px; }
+h3 { margin-top:40px; }
+.note { font-size: 10px; padding: 20px 0; transition-duration: .3s; }
+.note:hover { font-size: 14px; }
