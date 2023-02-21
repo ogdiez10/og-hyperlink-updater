@@ -2,7 +2,9 @@ Vue.component('posts-plugin', {
     data() {
         return {
             searching: '',
-            posts: 'nothing here',
+            replacing: '',
+            highlighted: '',
+            posts: '',
         };
     },
     computed: {
@@ -20,6 +22,8 @@ Vue.component('posts-plugin', {
             })
             .then ((res) => {
                 this.posts = JSON.parse(res);
+                
+                
             });
         },
     },
@@ -28,12 +32,14 @@ Vue.component('posts-plugin', {
     },
     template: `<div>
     <h2>Hyperlink Updater.</h2>
-    <div class="f">Search <input v-model="searching" placeholder="https://www.oldlink.com" type="text" /></div>
-    <div class="f">Replace <input type="text" /></div>
+    <div class="f">Search <input type="text" v-model="searching" placeholder="https://www.oldlink.com" /></div>
+    <div class="f">Replace <input type="text" v-model="replacing" placeholder="https://www.newlink.com"  /></div>
     <div class="ff"><button @click="fetchPosts();">Check Results</button></div>
     <p class="note">Clicking on "Preview Changes" will show you all the coincidences before changing them on the Database</p>
     <h3>Results: </h3>
-    <div v-for="post, index in posts" :keys="index">{{ post }}</div>
+        <div v-for="post, index in posts" :keys="index" class="result">
+        <b>Post title:</b> {{ post.title.rendered }}<br /><b>Post content:</b> {{ post.content.rendered }}
+        </div>
     </div>`,
 
 });
